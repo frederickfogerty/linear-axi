@@ -91,10 +91,9 @@ async function createIssueCommand(args, runtime) {
   if (parsed.help) return issueCreateHelp();
   rejectIdOnCreate("issue", ISSUE_ID_ON_CREATE_HELP, parsed);
   const toolArgs = await issueToolArgs(parsed, runtime);
-  await applyRepoProjectDefault(toolArgs, runtime, {
-    command: "linear-axi issues create",
-    requireProject: true,
-  });
+  // `--project` is optional: use an explicit --project, a repo-bound default
+  // when one exists, or none at all (project-less issue).
+  await applyRepoProjectDefault(toolArgs, runtime);
   requireValue(
     toolArgs.title && toolArgs.team,
     "creating an issue requires --title and --team",
