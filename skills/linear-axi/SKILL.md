@@ -45,3 +45,4 @@ Run `linear-axi --help` for global flags, `linear-axi <resource> --help` for gro
 - Mutations validate targets and report compact results. After a transport or response failure, inspect the target before retrying to avoid duplicate changes.
 - For multi-line markdown descriptions, comments, or documents, write the text to a UTF-8 file and pass `--description-file <path>`, `--body-file <path>`, or `--content-file <path>`.
 - Repository project defaults are validated before an issue, document, or milestone command uses them unless `--project <project>` overrides them. Use `--all-projects` on issue and document list commands only when a workspace-wide list is intended.
+- Set `LINEAR_AXI_DEFAULT_TEAM` to a team key to skip `--team` on `issues create`. An explicit `--team` always wins.

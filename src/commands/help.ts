@@ -318,6 +318,8 @@ flags:
   --dueDate <yyyy-mm-dd>
   --description <markdown>
   --description-file <path>
+env:
+  LINEAR_AXI_DEFAULT_TEAM <team>   default team when --team is omitted
 examples:
   linear-axi issues create --title "Fix auth" --team ENG
   linear-axi issues create --title "Task" --team ENG --project "Roadmap"

@@ -94,6 +94,9 @@ async function createIssueCommand(args, runtime) {
   // `--project` is optional: use an explicit --project, a repo-bound default
   // when one exists, or none at all (project-less issue).
   await applyRepoProjectDefault(toolArgs, runtime);
+  // `--team` is required unless LINEAR_AXI_DEFAULT_TEAM qualifies it.
+  const defaultTeam = runtime.env.LINEAR_AXI_DEFAULT_TEAM?.trim();
+  if (!toolArgs.team && defaultTeam) toolArgs.team = defaultTeam;
   requireValue(
     toolArgs.title && toolArgs.team,
     "creating an issue requires --title and --team",
